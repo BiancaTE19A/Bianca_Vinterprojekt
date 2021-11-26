@@ -1,4 +1,5 @@
 using System;
+using Raylib_cs;
 
 namespace Bianca_Vinterprojekt
 {
@@ -6,7 +7,7 @@ namespace Bianca_Vinterprojekt
     {
         public InitRaylib()
         {
-
+            Raylib.InitWindow(800, 600, "Hello World");
         }
     }
 }
