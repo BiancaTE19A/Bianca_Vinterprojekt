@@ -11,21 +11,22 @@ namespace Bianca_Vinterprojekt
         public int hp;
         public int movementX;
         public int movementY;
+        public bool colliding = false;
 
         public Rectangle rec = new Rectangle(200, 600, 100, 100);
+        Room currentR = new Room();
 
         public Player()
         {
             movementX = 1;
         }
-        public void DrawPlayer()
+        public void Draw()
         {
             Raylib.DrawRectangleRec(rec, Color.BLUE);
         }
         public void Update()
         {
             Movement();
-            DrawPlayer();
         }
         private void Movement()
         {
@@ -38,7 +39,15 @@ namespace Bianca_Vinterprojekt
                 rec.x += movementX;
             }
         }
-
+        public bool CheckCollisionDoor(Room curr)
+        {
+            if (Raylib.CheckCollisionRecs(rec, curr.door.rec))
+            {
+                // ChangeRooms(curr);
+                return true;
+            }
+            return false;
+        }
 
     }
 }

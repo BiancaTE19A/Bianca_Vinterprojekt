@@ -6,21 +6,32 @@ namespace Bianca_Vinterprojekt
     public class Startroom : Room
     {
 
-        Door door1;
-        Rectangle recD1;
+        // Door door;
+
+        public Rectangle startBg;
+
+
 
 
         public Startroom()
         {
-            recD1.width = 150;
-            recD1.height = 400;
-            recD1.x = 1000;
-            recD1.y = 700 - recD1.height;
+            door.rec.width = 150;
+            door.rec.height = 400;
+            door.rec.x = 600;
+            door.rec.y = 700 - door.rec.height;
+
+            door.target = new Livingroom();
+
+            // current = "startroom";
+            // target = "livingroom";
+            // target = new Livingroom();
+
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            Raylib.DrawRectangleRec(recD1, Color.BROWN);
+            Raylib.DrawRectangle(0, 0, 1800, 900, Color.GREEN);
+            Raylib.DrawRectangleRec(door.rec, Color.BROWN);
         }
 
     }
