@@ -1,33 +1,28 @@
 using System;
 using Raylib_cs;
+using System.Collections.Generic;
 
 namespace Bianca_Vinterprojekt
 {
     public class Player
     {
-        public string name;
-        public int height;
-        public int width;
+        private int screenWidth = 1800;
+        private int screenHeight = 900;
+        private int floor = 700;
         public int hp;
         public int movementX;
         public int movementY;
-        public bool colliding = false;
 
         public Rectangle rec = new Rectangle(200, 600, 100, 100);
-        Room currentR = new Room();
+
+        private HashSet<Key> carriedKeys = new HashSet<Key>();
+
 
         public Player()
         {
             movementX = 1;
         }
-        public void Draw()
-        {
-            Raylib.DrawRectangleRec(rec, Color.BLUE);
-        }
-        public void Update()
-        {
-            Movement();
-        }
+
         private void Movement()
         {
             if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
@@ -39,15 +34,27 @@ namespace Bianca_Vinterprojekt
                 rec.x += movementX;
             }
         }
-        public bool CheckCollisionDoor(Room curr)
+
+        public void Update(Room current)
         {
-            if (Raylib.CheckCollisionRecs(rec, curr.door.rec))
-            {
-                // ChangeRooms(curr);
-                return true;
-            }
-            return false;
+            Movement();
+            CheckCollisionDoor(current);
         }
+
+        public void Draw()
+        {
+            Raylib.DrawRectangleRec(rec, Color.BLUE);
+        }
+
+        public bool CheckCollisionDoor(Room current)
+        {
+            return (Raylib.CheckCollisionRecs(rec, current.door.rec));
+        }
+
+        // public bool CheckCollisionKey(Key key)
+        // {
+        //     return (Raylib.CheckCollisionRecs(rec, key.rec));
+        // }
 
     }
 }

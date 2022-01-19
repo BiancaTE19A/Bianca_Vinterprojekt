@@ -5,41 +5,17 @@ namespace Bianca_Vinterprojekt
 {
     public class Room
     {
-        public string current;
-        // public string target;
-        // public Room target;
-        public Rectangle background = new Rectangle();
-        public Door door = new Door(0, 0, 0, 0);
-        public Rectangle dRec;
+        public Key key = new Key(0, 0, 25, 25);
+        public Door door = new Door(0, 0, 150, 400);
 
-
-        // public Room()
-        // {
-        //     // door1 = new Door(100, 400, 100, 300, "door1");
-        //     // door = new Door(1600, 400, 100, 300, "door");
-        // }
+        protected int screenWidth = 1800;
+        protected int screenHeight = 900;
+        protected int floor = 700;
 
 
         public virtual void Draw()
         {
-            // door1.Draw();
-            // door.Draw();
+            //behöver inte override på en draw-metod eftersom basklassen aldrig kommer ritas ut men tyckte det var coolt
         }
-
-
-
-
-
-
-
-
-        // Door rightDoor;
-        // Door leftDoor;
-
-        // public Room(Room r, Room l)
-        // {
-        //     rightDoor = new Door(r, this);
-        //     leftDoor = new Door(this, l);
-        // }
     }
 }
